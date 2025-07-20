@@ -13,7 +13,7 @@ def summarize_with_gemini(content):
             {
                 "parts": [
                     {
-                        "text": f"Bạn hãy tổng hợp nội dung sau thành dàn ý, dễ hiểu cho người bận rộn:\n\n{content}"
+                        "text": f"Bạn đọc nội dung sau. Phân tích dàn ý, Tìm ra nhược điểm sau đó thêm giá trị. Và tạo ra một bài viết mới nhiều giá trị hơn nhé \n\n{content}"
                     }
                 ]
             }
