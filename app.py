@@ -1,10 +1,20 @@
 import streamlit as st
-from newspaper import Article
+import requests
+from bs4 import BeautifulSoup
 from ai_providers import gemini
 from config import AI_PROVIDER
 
 st.set_page_config(page_title="📚 ReadResumer", layout="centered")
 st.title("📚 ReadResumer – Tóm tắt bài viết trong 5 giây")
+
+def extract_text_from_url(url):
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'html.parser')
+
+    # Lấy nội dung từ các thẻ <p>
+    paragraphs = soup.find_all('p')
+    text = "\n".join([p.get_text() for p in paragraphs])
+    return text[:5000]  # tránh gửi quá nhiều token cho API
 
 url = st.text_input("🔗 Nhập URL bài viết:")
 
@@ -14,10 +24,7 @@ if st.button("Tóm tắt"):
     else:
         with st.spinner("🔍 Đang tải và xử lý bài viết..."):
             try:
-                article = Article(url)
-                article.download()
-                article.parse()
-                content = article.text
+                content = extract_text_from_url(url)
 
                 if AI_PROVIDER == "gemini":
                     summary = gemini.summarize_with_gemini(content)
