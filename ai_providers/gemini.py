@@ -13,7 +13,7 @@ def summarize_with_gemini(content):
             {
                 "parts": [
                     {
-                        "text": f"Tóm tắt nội dung sau thành 3 ý chính đơn giản, dễ hiểu cho người bận rộn:\n\n{content}"
+                        "text": f"Bạn hãy tổng hợp nội dung sau thành dàn ý, dễ hiểu cho người bận rộn:\n\n{content}"
                     }
                 ]
             }
