@@ -1,4 +1,4 @@
-import streamlit as st
+import os
 
 AI_PROVIDER = "gemini"
-GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
