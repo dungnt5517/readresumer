@@ -2,8 +2,8 @@ import requests
 from config import GEMINI_API_KEY
 
 def summarize_with_gemini(content):
-    url = f"https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key={GEMINI_API_KEY}"
-    
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={GEMINI_API_KEY}"
+
     headers = {
         "Content-Type": "application/json"
     }
@@ -13,7 +13,7 @@ def summarize_with_gemini(content):
             {
                 "parts": [
                     {
-                        "text": f"Tóm tắt nội dung sau thành 3 ý chính dễ hiểu:\n\n{content}"
+                        "text": f"Tóm tắt nội dung sau thành 3 ý chính đơn giản, dễ hiểu cho người bận rộn:\n\n{content}"
                     }
                 ]
             }
